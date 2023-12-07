@@ -31,7 +31,7 @@ def update():
     val4 = entryModel.get()
     val5 = entryVin.get()
     val6 = Manager.update(val2, val3, val4, val5,val)
-    font = f"Car seleceted: {val5}"
+    font = f"Car seleceted: {val6}"
     displayBox = tk.Text(win,bg="white",width=50,height=10,fg="black")
     displayBox.insert(tk.INSERT,font)
     displayBox.place(x=325,y=75)
