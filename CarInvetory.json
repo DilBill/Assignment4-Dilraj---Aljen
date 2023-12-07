@@ -13,12 +13,6 @@
             "Vin": "4NSBG41JXMN109186"
         }, 
         {
-            "Year": "2018", 
-            "Make": "Mazada", 
-            "Model": "CX-3", 
-            "Vin": "2MGVH64JVNP109186"
-        }, 
-        {
             "Year": "2001", 
             "Make": "Nissan", 
             "Model": "Slivia S15", 
@@ -32,21 +26,27 @@
         }, 
         {
             "Year": "2001", 
-            "Make": "Toyota", 
-            "Model": "Supra", 
-            "Vin": "JSPRA57MKMD432156"
-        }, 
-        {
-            "Year": "2001", 
             "Make": "Nissan", 
             "Model": "R34 Skyline", 
             "Vin": "JNGTR34JNSI289387"
         }, 
         {
-            "Year": "1990", 
-            "Make": "Toyota", 
-            "Model": "Supra", 
-            "Vin": "JTYAS26KDNM261840"
+            "Year": "2013", 
+            "Make": "Nissan", 
+            "Model": "Gtr R35", 
+            "Vin": "1NGTR35COUP333435"
+        }, 
+        {
+            "Year": "2023", 
+            "Make": "BMW", 
+            "Model": "M3", 
+            "Vin": "2BEAM26COUP263264"
+        }, 
+        {
+            "Year": "2022", 
+            "Make": "Volkswagon", 
+            "Model": "Golf Gti", 
+            "Vin": "1GOLF58GTIR208190"
         }
     ]
 }
