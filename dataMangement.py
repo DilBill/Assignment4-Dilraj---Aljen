@@ -30,14 +30,22 @@ class Manager:
         
         with open('CarInvetory.json', 'r') as jsonfile:
             data = json.load(jsonfile)
-            new_car = {"Year": year, "Make": make, "Model": model, "Vin": vin}
             #data.append(new_car)
         i = 0
         for car in data["Cars"]:
             i = i + 1
             if car["Model"] == id:
-                car = new_car
                 print(type(car))
+                print(car)
+                yR = car["Year"]
+                mK = car["Make"]
+                mD = car["Model"]
+                vN = car["Vin"]
+                car["Year"] = car["Year"].replace(yR,year)
+                car["Make"] = car["Make"].replace(mK,make)
+                car["Model"] = car["Model"].replace(mD,model)
+                car["Vin"] = car["Vin"].replace(vN,vin)
+                
                 with open('CarInvetory.json','w') as file:
                     
                     json.dump(data,file,indent=4,separators=(', ',': '))
@@ -71,8 +79,8 @@ class Manager:
 
 #Manager.find("R34 Skyline")
 year = "1990"
-make = "Toyota"
-model = "Supra"
-vin = "JTYAS26KDNM261840"
-Manager.add(year,make,model,vin)
-#Manager.update(year,make,model,vin,1,"R34 Skyline")
+make = "Mazda"
+model = "Miata"
+vin = "JMIAT26XDEO372951"
+#Manager.add(year,make,model,vin)
+Manager.update(year,make,model,vin,1,"CX-3")
