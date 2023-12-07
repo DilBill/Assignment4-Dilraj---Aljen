@@ -1,39 +1,44 @@
 import json
 
 class Manager:
-    
+    # Method to allow all the user to show all items in the json file
     def showAll():
-        
+        # open file in read mode
         with open('CarInvetory.json' , 'r') as jsonfile:
             data = json.load(jsonfile)
-
+        # print out all the cars in the json file
         for car in data :
             print(car['Year'],car['Make'] , car['Model'])
-    
-    
-    def find(id):
-        car_found = False
 
+        jsonfile.close()
+        
+    # Method to allow the user to find a single car in the json file
+    def find(id):
+        
+        car_found = False
+        # open json file in read mode
         with open('CarInvetory.json', 'r') as jsonfile:
             data = json.load(jsonfile)
-      
+        # find the car that the user is looking for based on the model or year
         for car in data["Cars"]:
             if car["Model"] == id:
                 print(car)
                 car_found = True
-                return car  
+                return True  
 
         if not car_found:
             print("No Car Found")
-            
-    def update(year,make,model,vin,index,id):
+            return False
+    
+    # Method that will allow the user to find and update the details of a car
+    def update(year,make,model,vin,id):
         
+        car_found = False
         with open('CarInvetory.json', 'r') as jsonfile:
             data = json.load(jsonfile)
-            #data.append(new_car)
-        i = 0
+        
+
         for car in data["Cars"]:
-            i = i + 1
             if car["Model"] == id:
                 print(type(car))
                 print(car)
@@ -58,8 +63,31 @@ class Manager:
             jsonfile.close()
             
     
-    def delete():
-        pass
+    def delete(id):
+        car_found = False
+        with open('CarInvetory.json', 'r') as jsonfile:
+            data = json.load(jsonfile)
+            
+        i = 0
+        for car in data["Cars"]:
+            
+            if car["Model"] == id:
+                print(data["Cars"][i])
+                print(type(car))
+                print(car)
+                del data["Cars"][i]
+            
+                
+                with open('CarInvetory.json','w') as file:
+                    
+                    json.dump(data,file,indent=4,separators=(', ',': '))
+                car_found = True
+                file.close()
+                return car  
+            i = i + 1
+        if not car_found:
+            print("No Car Found")
+            jsonfile.close()
     
     def add(year,make,model,vin):
         with open('CarInvetory.json', 'r') as jsonfile:
@@ -78,9 +106,10 @@ class Manager:
 
 
 #Manager.find("R34 Skyline")
-year = "1990"
-make = "Mazda"
-model = "Miata"
-vin = "JMIAT26XDEO372951"
+year = "2005"
+make = "Acura"
+model = "RSX"
+vin = "JRSXL27XDEO041221"
 #Manager.add(year,make,model,vin)
-Manager.update(year,make,model,vin,1,"CX-3")
+#Manager.update(year,make,model,vin,"Supra")
+Manager.delete("Supra")
