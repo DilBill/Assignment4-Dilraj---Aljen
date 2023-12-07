@@ -16,7 +16,7 @@ class Manager:
         jsonfile.close()
         
     # Method to allow the user to find a single car in the json file
-    def find(id):
+    def find(id,type):
         
         car_found = False
         # open json file in read mode
@@ -24,7 +24,7 @@ class Manager:
             data = json.load(jsonfile)
         # find the car that the user is looking for based on the model or year
         for car in data["Cars"]:
-            if car["Model"] == id:
+            if car[type] == id:
                 print(car)
                 car_found = True
                 return car  

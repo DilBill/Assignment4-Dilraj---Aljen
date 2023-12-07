@@ -3,7 +3,12 @@ from tkinter import ttk
 from dataMangement import Manager
 def find():
     val = entryFind.get()
-    val2 = Manager.find(val)
+    type = ""
+    if option1.get() == 1:
+        type = "Model"
+    elif option2.get() == 1:
+        type = "Vin"
+    val2 = Manager.find(val,type)
     font = f"Car seleceted: {val2}"
     displayBox = tk.Text(win,bg="white",width=50,height=10,fg="black")
     displayBox.insert(tk.INSERT,font)
@@ -110,13 +115,16 @@ findBtn.place(x= 275,y=380)
 showBtn = ttk.Button(win,text="Show All",command=showAll)
 showBtn.place(x=450,y=230)
 
-option = tk.IntVar
+option1 = tk.IntVar()
 
-radioBtn1 = ttk.Radiobutton(win,text="By Model",variable= option,value=1)
-radioBtn1.place(x=350,y=340)
+option2 = tk.IntVar()
 
-radioBtn2 = ttk.Radiobutton(win,text="By Vin",variable=option,value=2)
-radioBtn2.place(x=450,y=340)
+
+checkBtn1 = tk.Checkbutton(win,text="By Model",variable=option1,onvalue=1,offvalue=0)
+checkBtn1.place(x=350,y=340)
+
+checkBtn2 = tk.Checkbutton(win,text="By Vin",variable=option2,onvalue=1,offvalue=0)
+checkBtn2.place(x=450,y=340)
 
 displayBox = tk.Text(win,bg="white",width=50,height=10,fg="black")
 displayBox.place(x=325,y=75)
