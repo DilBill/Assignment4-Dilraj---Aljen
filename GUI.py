@@ -8,7 +8,7 @@ def find():
     displayBox = tk.Text(win,bg="white",width=50,height=10,fg="black")
     displayBox.insert(tk.INSERT,font)
     displayBox.place(x=325,y=75)
-    print(val, val2, "Has been Found")
+    print(val2, "Has been Found")
     return val2
 
 def add():
@@ -37,6 +37,26 @@ def update():
     displayBox.place(x=325,y=75)
     print(val6, "Has been Added")
     return val6
+
+def delete():
+    val = entryFind.get()
+    val2 = Manager.delete(val)
+    font = f"Car seleceted: {val2}"
+    displayBox = tk.Text(win,bg="white",width=50,height=10,fg="black")
+    displayBox.insert(tk.INSERT,font)
+    displayBox.place(x=325,y=75)
+    print(val, val2, "Has been Deleted")
+    return val2
+
+def showAll():
+    val2 = Manager.showAll()
+    font = f"{val2}"
+    displayBox = tk.Text(win,bg="white",width=50,height=10,fg="black")
+    displayBox.insert(tk.INSERT,font)
+    displayBox.place(x=325,y=75)
+    print(val2)
+    return val2
+    
 
 win = tk.Tk()
 win.title("Car Garage")
@@ -81,13 +101,13 @@ addBtn.place(x=150,y=280)
 updateBtn = ttk.Button(win,text="Update Car",command=update)
 updateBtn.place(x=450, y=280)
 
-deleteBtn = ttk.Button(win,text="Delete Car",command=add)
+deleteBtn = ttk.Button(win,text="Delete Car",command=delete)
 deleteBtn.place(x=300,y=280)
 
 findBtn = ttk.Button(win,text="Find Car",command=find)
 findBtn.place(x= 275,y=380)
 
-showBtn = ttk.Button(win,text="Show All",command=add)
+showBtn = ttk.Button(win,text="Show All",command=showAll)
 showBtn.place(x=450,y=230)
 
 option = tk.IntVar

@@ -7,8 +7,11 @@ class Manager:
         with open('CarInvetory.json' , 'r') as jsonfile:
             data = json.load(jsonfile)
         # print out all the cars in the json file
-        for car in data :
-            print(car['Year'],car['Make'] , car['Model'])
+        allCars = []
+        for car in data["Cars"]:
+            cars = {car['Year'],car['Make'] , car['Model'], car['Vin']}
+            allCars.append(cars)
+        return allCars
 
         jsonfile.close()
         
