@@ -1,17 +1,42 @@
 import tkinter as tk
 from tkinter import ttk
-
-def action():
-    val = entryBox.get()
-    val2 = entryBox2.get()
-    val3 = entryBox3.get()
-    val4 = entryBox4.get()
-    font = f"Car seleceted: {val2} {val} {val4} {val3}"
+from dataMangement import Manager
+def find():
+    val = entryFind.get()
+    val2 = Manager.find(val)
+    font = f"Car seleceted: {val2}"
     displayBox = tk.Text(win,bg="white",width=50,height=10,fg="black")
     displayBox.insert(tk.INSERT,font)
     displayBox.place(x=325,y=75)
-    print(val, val2, val3,val4,"Has been Added")
-    return val,val2,val3,val4
+    print(val, val2, "Has been Found")
+    return val2
+
+def add():
+    val = entryYear.get()
+    val2 = entryMake.get()
+    val3 = entryModel.get()
+    val4 = entryVin.get()
+    val5 = Manager.add(val, val2, val3, val4)
+    font = f"Car seleceted: {val5}"
+    displayBox = tk.Text(win,bg="white",width=50,height=10,fg="black")
+    displayBox.insert(tk.INSERT,font)
+    displayBox.place(x=325,y=75)
+    print(val5, "Has been Added")
+    return val5
+
+def update():
+    val = entryFind.get()
+    val2 = entryYear.get()
+    val3 = entryMake.get()
+    val4 = entryModel.get()
+    val5 = entryVin.get()
+    val6 = Manager.update(val2, val3, val4, val5,val)
+    font = f"Car seleceted: {val5}"
+    displayBox = tk.Text(win,bg="white",width=50,height=10,fg="black")
+    displayBox.insert(tk.INSERT,font)
+    displayBox.place(x=325,y=75)
+    print(val6, "Has been Added")
+    return val6
 
 win = tk.Tk()
 win.title("Car Garage")
@@ -19,50 +44,50 @@ win.geometry("700x500")
 
 label = ttk.Label(win,text="My Car Garage\n")
 label.place(x=300,y=10)
-label1 = ttk.Label(win, text="Select Car Make")
-label1.place(x= 5, y=50)
+make = ttk.Label(win, text="Car Make")
+make.place(x= 5, y=50)
 
 # Set the default value for the ComboBox
-entryBox = ttk.Entry(win)# Set the default value
-entryBox.place(x=110,y=50)
+entryMake = ttk.Entry(win)# Set the default value
+entryMake.place(x=110,y=50)
 
-label2 = ttk.Label(win, text="Select Year")
-label2.place(x=5,y=100)
-
-# Set the default value for the ComboBox
-entryBox2 = ttk.Entry(win)# Set the default value
-entryBox2.place(x=110,y=100)
-
-label3 = ttk.Label(win, text="Car Vin Number")
-label3.place(x=5, y=150)
+year = ttk.Label(win, text="Year")
+year.place(x=5,y=100)
 
 # Set the default value for the ComboBox
-entryBox3 = ttk.Entry(win)# Set the default value
-entryBox3.place(x=110,y=150)
+entryYear = ttk.Entry(win)# Set the default value
+entryYear.place(x=110,y=100)
 
-label4 = ttk.Label(win, text="Car model")
-label4.place(x= 5, y=200)
+vin = ttk.Label(win, text="Car Vin Number")
+vin.place(x=5, y=150)
 
 # Set the default value for the ComboBox
-entryBox4 = ttk.Entry(win)# Set the default value
-entryBox4.place(x=110,y=200)
+entryVin = ttk.Entry(win)# Set the default value
+entryVin.place(x=110,y=150)
 
-entryBox5 = ttk.Entry(win)
-entryBox5.place(x= 380, y=380)
+model = ttk.Label(win, text="Car model")
+model.place(x= 5, y=200)
 
-addBtn = ttk.Button(win, text="Add Car", command=action)
+# Set the default value for the ComboBox
+entryModel = ttk.Entry(win)# Set the default value
+entryModel.place(x=110,y=200)
+
+entryFind = ttk.Entry(win)
+entryFind.place(x= 380, y=380)
+
+addBtn = ttk.Button(win, text="Add Car", command=add)
 addBtn.place(x=150,y=280)
 
-updateBtn = ttk.Button(win,text="Update Car",command=action)
+updateBtn = ttk.Button(win,text="Update Car",command=update)
 updateBtn.place(x=450, y=280)
 
-deleteBtn = ttk.Button(win,text="Delete Car",command=action)
+deleteBtn = ttk.Button(win,text="Delete Car",command=add)
 deleteBtn.place(x=300,y=280)
 
-findBtn = ttk.Button(win,text="Find Car",command=action)
+findBtn = ttk.Button(win,text="Find Car",command=find)
 findBtn.place(x= 275,y=380)
 
-showBtn = ttk.Button(win,text="Show All",command=action)
+showBtn = ttk.Button(win,text="Show All",command=add)
 showBtn.place(x=450,y=230)
 
 option = tk.IntVar
