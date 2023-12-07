@@ -24,7 +24,7 @@ class Manager:
             if car["Model"] == id:
                 print(car)
                 car_found = True
-                return True  
+                return car  
 
         if not car_found:
             print("No Car Found")
@@ -56,6 +56,7 @@ class Manager:
                     json.dump(data,file,indent=4,separators=(', ',': '))
                 car_found = True
                 file.close()
+                print(car)
                 return car  
 
         if not car_found:
@@ -99,6 +100,8 @@ class Manager:
 
             json.dump(data,file,indent=4,separators=(', ',': '))
             file.close()
+            
+        return new_car
         
     
        
